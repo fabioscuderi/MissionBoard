@@ -1,2 +1,112 @@
-%h1 Mission Board
-%p Logged in as #{@user.name}
+.container-fluid	
+	.row.header
+		.col-md-2.moderator
+			%h4 Moderator
+		.col-md-2.timekeeper
+			%h4 Time Keeper
+		.col-md-2.observer
+			%h4 Observer
+		.col-md-2.mood
+			%h4 My Mood
+		.col-md-2.user
+			%h4 Image
+			%h4 Fabio
+		.col-md-2.exit
+			%h4 Exit
+	.row.main
+		.col-md-4.sidebar1
+			%h3 Mood Board
+			.row
+				.col-md-3.green
+				.col-md-9.peoplegreen.block
+					Thorsten
+					Melanie
+					Christine
+			.row
+				.col-md-3.yellow
+				.col-md-9.peopleyellow.block
+					Thorsten
+					Melanie
+					Christine
+			.row
+				.col-md-3.red
+				.col-md-9.peoplered.block
+					Thorsten
+					Melanie
+					Christine
+		.col-md-8.body1
+			%h3 To Do
+			%table.table.table-striped
+				.table-responsive
+					%thead
+						%tr
+							%th Title
+							%th Desctiption
+							%th Status
+							%th Due Date
+							%th Asignees
+					%tbody
+						%tr
+							%td todo1
+							%td Learn Rails
+							%td Done
+							%td 12/05/12
+							%td Fabio
+						%tr
+							%td todo1
+							%td Learn Rails
+							%td Done
+							%td 12/05/12
+							%td Fabio
+	.row.main2
+		.col-md-4.sidebar2
+			%h3 Successes & Failures
+			%div.inline
+				%h4 Success
+				%p Hit 5000 Sales
+			%div.inline
+				%h4 Success
+				%p CSAT up 15%
+			%div.inline
+				%h4 Failure
+				%p Mailing failed
+		.col-md-8.body2
+			%h3 Important Updates
+			%div.inline
+				%h4 Update1
+				%p Hit 5000 Sales
+			%div.inline
+				%h4 Update2
+				%p CSAT up 15%
+			%div.inline
+				%h4 Update3
+				%p Mailing failed
+	.row.main3
+		.col-md-4.sidebar3
+			%h3 Impulse
+			%div.inline
+				%p "Tiefgängiges Zitat"
+			%div.inline
+				%p "Lebensweisheit"
+		.col-md-8.body3
+			%h3 Meetings and Events
+			%table.table.table-striped
+				.table-responsive
+					%thead
+						%tr
+							%th Title
+							%th Desctiption
+							%th When
+							%th WHO
+					%tbody
+						%tr
+							%td Event1
+							%td Important meeting
+							%td 12/05/12
+							%td Fabio
+						%tr
+							%td Event2
+							%td Cool conference
+							%td 12/05/12
+							%td Fabio
+

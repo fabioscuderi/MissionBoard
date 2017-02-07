@@ -1,17 +1,25 @@
-%h1 Users#index
+%h1.loginscreen__heading Mission Board
+%h2.loginscreen__subheading Log-in als bestehender Benuter:
 - if @users.present?
-	%ul
+	%ul.loginscreen__user
 		- @users.each do |user|
+			- if user.photo.present?
+				= image_tag user.photo, style: 'width: 140px; height: 140px'
+			- else
+				%img.img-circle{:alt => "Generic placeholder image", :height => "140", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "140"}/
 			%li= link_to user.name, missionboard_path(user_id: user.id)
 			%li= link_to "Destroy", user, method: :delete, data: { confirm: 'Are you sure?' }
 - else
 	%div Keine User vorhanden :-(
 
+%h2.loginscreen__subheading Neuen Benutzer erstellen:
 = form_for @user do |f|
-	%div
+	%div.loginscreen__new
 		= f.label :name
 		= f.text_field :name
-
-	%div
+	%p
+		%label Photo
+		= f.file_field :photo
+	%div.loginscreen__submit
 		= f.submit
 	
