@@ -2,20 +2,26 @@
 	.row.header
 		.col-md-2.moderator
 			%h4 Moderator
+			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
 		.col-md-2.timekeeper
 			%h4 Time Keeper
+			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
 		.col-md-2.observer
 			%h4 Observer
+			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
 		.col-md-2.mood
 			%h4 My Mood
+			%div.mymood
+			%div
+				select box
 		.col-md-2.user
-			%h4 Image
 			%h4 Fabio
+			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
 		.col-md-2.exit
 			%h4 Exit
 	.row.main
 		.col-md-4.sidebar1
-			%h3 Mood Board
+			%h3.heading Mood Board
 			.row
 				.col-md-3.green
 				.col-md-9.peoplegreen.block
@@ -35,7 +41,7 @@
 					Melanie
 					Christine
 		.col-md-8.body1
-			%h3 To Do
+			%h3.heading To Do
 			%table.table.table-striped
 				.table-responsive
 					%thead
@@ -60,7 +66,7 @@
 							%td Fabio
 	.row.main2
 		.col-md-4.sidebar2
-			%h3 Successes & Failures
+			%h3.heading Successes & Failures
 			%div.inline
 				%h4 Success
 				%p Hit 5000 Sales
@@ -71,7 +77,7 @@
 				%h4 Failure
 				%p Mailing failed
 		.col-md-8.body2
-			%h3 Important Updates
+			%h3.heading Important Updates
 			%div.inline
 				%h4 Update1
 				%p Hit 5000 Sales
@@ -83,13 +89,13 @@
 				%p Mailing failed
 	.row.main3
 		.col-md-4.sidebar3
-			%h3 Impulse
+			%h3.heading Impulse
 			%div.inline
 				%p "Tiefgängiges Zitat"
 			%div.inline
 				%p "Lebensweisheit"
 		.col-md-8.body3
-			%h3 Meetings and Events
+			%h3.heading Meetings and Events
 			%table.table.table-striped
 				.table-responsive
 					%thead
