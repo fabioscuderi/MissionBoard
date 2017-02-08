@@ -52,18 +52,13 @@
 							%th Due Date
 							%th Asignees
 					%tbody
-						%tr
-							%td todo1
-							%td Learn Rails
-							%td Done
-							%td 12/05/12
-							%td Fabio
-						%tr
-							%td todo1
-							%td Learn Rails
-							%td Done
-							%td 12/05/12
-							%td Fabio
+						- @todos.each do |todo|
+							%tr
+								%td= todo.title
+								%td= todo.description
+								%td= todo.status
+								%td= todo.due_date
+								%td= todo.image
 	.row.main2
 		.col-md-4.sidebar2
 			%h3.heading Successes & Failures
