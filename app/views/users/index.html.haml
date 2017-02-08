@@ -7,7 +7,8 @@
 				= image_tag user.photo, style: 'width: 140px; height: 140px'
 			- else
 				%img.img-circle{:alt => "Generic placeholder image", :height => "140", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "140"}/
-			%li= link_to user.name, missionboard_path(user_id: user.id)
+			%li= link_to user.name, enter_path(user_id: user.id)
+			%li= link_to "Edit", edit_user_path(user)
 			%li= link_to "Destroy", user, method: :delete, data: { confirm: 'Are you sure?' }
 - else
 	%div Keine User vorhanden :-(

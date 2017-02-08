@@ -1,24 +1,20 @@
 .container-fluid	
 	.row.header
 		.col-md-2.moderator
-			%h4 Moderator
-			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
-		.col-md-2.timekeeper
-			%h4 Time Keeper
-			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
-		.col-md-2.observer
-			%h4 Observer
-			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
+			- @roles.each do |role|
+				%span= role.name
+				= select_tag role.name, options_from_collection_for_select(@users, "id", "name")
 		.col-md-2.mood
 			%h4 My Mood
-			%div.mymood
-			%div
-				select box
+			= select_tag @moods.name, options_from_collection_for_select(@moods, "id", "name")
 		.col-md-2.user
-			%h4 Fabio
-			%img{:alt => "Generic placeholder image", :height => "140", :src => "/images/=_original.jpg", :width => "140"}
+			= @user.name
+			- if @user.photo.present?
+				= image_tag @user.photo, style: 'width: 140px; height: 140px'
+			- else
+				"No photo"
 		.col-md-2.exit
-			%h4 Exit
+			= link_to "Exit", exit_path
 	.row.main
 		.col-md-4.sidebar1
 			%h3.heading Mood Board

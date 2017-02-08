@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  	resources :moods
   	resources :todos
-	resources :users, only: [:index, :create, :destroy]
+	resources :users, only: [:index, :create, :destroy, :edit, :update]
 	resources :roles
+	get "/enter" => "missionboard#enter", as: "enter"
 	get "/missionboard" => "missionboard#show", as: "missionboard"
+	get "/exit" => "missionboard#exit", as: "exit"
+	root "users#index"
 end

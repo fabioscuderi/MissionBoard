@@ -7,11 +7,13 @@ class MissionboardController < ApplicationController
     def show
     	@user = current_user
     	@users = User.all
+    	@roles = Role.all
     	@todos = Todo.all
+        @moods = Mood.all
     end
 
     def exit
-    session[:current_user_id] = nil
-    redirect_to root_path
-  end
+    	session[:current_user_id] = nil
+    	redirect_to root_path
+  	end
 end
