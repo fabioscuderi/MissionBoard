@@ -15,8 +15,9 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @category = Category.find(params[:category_id])
     @post = Post.new
+    @categories = Category.all
+    @category = @categories.find(params[:category_id])
   end
 
   # GET /posts/1/edit

@@ -55,6 +55,7 @@
 								%td= todo.status
 								%td= todo.due_date
 								%td= todo.image
+					%div= link_to "New To Do", new_todo_path
 	.row.main2
 		.col-md-4.sidebar2
 			%h3.heading Successes & Failures
@@ -67,7 +68,7 @@
 			%div.inline
 				%h4 Failure
 				%p Mailing failed
-		%li= link_to "New Post", new_post_path
+			%div= link_to "New Post", new_post_path(category_id: 2)
 		.col-md-8.body2
 			%h3.heading Important Updates
 			%div.inline
@@ -79,6 +80,7 @@
 			%div.inline
 				%h4 Update3
 				%p Mailing failed
+			%div= link_to "New Post", new_post_path
 	.row.main3
 		.col-md-4.sidebar3
 			%h3.heading Impulse
@@ -86,6 +88,7 @@
 				%p "Tiefgängiges Zitat"
 			%div.inline
 				%p "Lebensweisheit"
+			%div= link_to "New Post", new_post_path
 		.col-md-8.body3
 			%h3.heading Meetings and Events
 			%table.table.table-striped
@@ -107,4 +110,5 @@
 							%td Cool conference
 							%td 12/05/12
 							%td Fabio
+							%div= link_to "New Post", new_post_path
 
