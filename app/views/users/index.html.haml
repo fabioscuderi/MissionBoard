@@ -1,26 +1,38 @@
-%h1.loginscreen__heading Mission Board
-%h2.loginscreen__subheading Log-in als bestehender Benuter:
-- if @users.present?
-	%ul.loginscreen__user
-		- @users.each do |user|
-			- if user.photo.present?
-				= image_tag user.photo, style: 'width: 140px; height: 140px'
+.container-fluid
+	.row.heading
+		%h1 innogy Team Board
+	.row.login
+		%h2 Log-in als bestehender Benutzer
+	.row.users
+		.col-md-2
+		.col-md-8
+			- if @users.present?
+				%div
+					- @users.each do |user|
+						.col-md-4
+							- if user.photo.present?
+								.photo= image_tag user.photo, style: 'width: 75px; height: 75px'
+							- else
+								%img.img-circle{:alt => "Generic placeholder image", :height => "140", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "140"}/
+							%div.name= link_to user.name, enter_path(user_id: user.id)
+							%div.edit= link_to "Edit", edit_user_path(user)
+							%div.destroy= link_to "Destroy", user, method: :delete, data: { confirm: 'Are you sure?' }
 			- else
-				%img.img-circle{:alt => "Generic placeholder image", :height => "140", :src => "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", :width => "140"}/
-			%li= link_to user.name, enter_path(user_id: user.id)
-			%li= link_to "Edit", edit_user_path(user)
-			%li= link_to "Destroy", user, method: :delete, data: { confirm: 'Are you sure?' }
-- else
-	%div Keine User vorhanden :-(
+				%div Keine User vorhanden :-(
+		.col-md-2
 
-%h2.loginscreen__subheading Neuen Benutzer erstellen:
-= form_for @user do |f|
-	%div.loginscreen__new
-		= f.label :name
-		= f.text_field :name
-	%p
-		%label Photo
-		= f.file_field :photo
-	%div.loginscreen__submit
-		= f.submit
+	.row.signup
+		.col-md-2
+		.col-md-8
+			%h2 Neuen Benutzer erstellen
+			= form_for @user do |f|
+				%p
+					= f.label :name
+					= f.text_field :name
+				%p
+					= f.label :photo
+					= f.file_field :photo
+				%div
+					= f.submit
+		.col-md-2
 	

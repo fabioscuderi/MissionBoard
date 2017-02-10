@@ -18,6 +18,7 @@ class RolesController < ApplicationController
   end
 
   def new
+    @users = User.all
     @role = Role.new
   end
 
