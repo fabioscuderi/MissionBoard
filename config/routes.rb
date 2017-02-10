@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  	resources :categories
-  	resources :posts
+  	resources :categories do
+  		resources :posts
+  	end
   	resources :moods
   	resources :todos
 	resources :users, only: [:index, :create, :destroy, :edit, :update]

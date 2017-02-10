@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :fetch_categories
 
   # GET /posts
   # GET /posts.json
@@ -15,9 +14,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    @category = Category.find(params[:category_id])
     @post = Post.new
-    @categories = Category.all
-    @category = @categories.find(params[:category_id])
   end
 
   # GET /posts/1/edit
@@ -68,10 +66,6 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
-    end
-
-    def fetch_categories
-      @categories = Category.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

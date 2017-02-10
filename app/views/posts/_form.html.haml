@@ -1,9 +1,19 @@
-= form_for [@category, @post]
+= form_for (post) do |f|
+  - if post.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(post.errors.count, "error")
+        prohibited this post from being saved:
+      %ul
+        - post.errors.full_messages.each do |message|
+          %li= message
+  end
   .field
     = f.label :title
     = f.text_field :title
   .field
     = f.label :body
     = f.text_field :body
+    = f.hidden_field :cagegory_id, @category.id
   .actions
     = f.submit
