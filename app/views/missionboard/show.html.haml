@@ -48,6 +48,8 @@
 							%th Status
 							%th Due Date
 							%th Asignees
+							%th
+							%th
 					%tbody
 						- @todos.each do |todo|
 							%tr
@@ -56,64 +58,19 @@
 								%td= todo.status
 								%td= todo.due_date
 								%td= todo.image
+								%td= link_to "Edit", edit_todo_path(todo)
+								%td= link_to "Delete", todo , method: :delete, data: { confirm: 'Are you sure?' }
 			%div.new= link_to "New To Do", new_todo_path
-			%div.new= link_to "Edit To Do", todos_path
 	.row.main2
-		.col-md-4.sidebar2
-			%h3.heading Successes & Failures
-			%div.inline
-				%h4 Success
-				%p Hit 5000 Sales
-			%div.inline
-				%h4 Success
-				%p CSAT up 15%
-			%div.inline
-				%h4 Failure
-				%p Mailing failed
-			%div.new= link_to "New Post", new_category_post_path(category_id: 2)
-			%div.new= link_to "Edit Post", category_posts_path(category_id: 3)
-		.col-md-8.body2
-			%h3.heading Important Updates
-			%div.inline
-				%h4 Update1
-				%p Hit 5000 Sales
-			%div.inline
-				%h4 Update2
-				%p CSAT up 15%
-			%div.inline
-				%h4 Update3
-				%p Mailing failed
-			%div.new= link_to "New Post", new_category_post_path(category_id: 3)
-			%div.new= link_to "Edit Post", category_posts_path(category_id: 3)
-	.row.main3
-		.col-md-4.sidebar3
-			%h3.heading Impulse
-			%div.inline
-				%p "Tiefgängiges Zitat"
-			%div.inline
-				%p "Lebensweisheit"
-			%div.new= link_to "New Post", new_category_post_path(category_id: 4)
-			%div.new= link_to "Edit Post", category_posts_path(category_id: 3)
-		.col-md-8.body3
-			%h3.heading Meetings and Events
-			%table.table.table-striped
-				.table-responsive
-					%thead
-						%tr
-							%th Title
-							%th Desctiption
-							%th When
-							%th WHO
-					%tbody
-						%tr
-							%td Event1
-							%td Important meeting
-							%td 12/05/12
-							%td Fabio
-						%tr
-							%td Event2
-							%td Cool conference
-							%td 12/05/12
-							%td Fabio
-			%div.new= link_to "New Post", new_category_post_path(category_id: 5)
+		- @categories.each do |category|
+			.col-md-4.posts
+				%h3.heading= category.name
+				- category.posts.each do |post|
+					.col-md-6
+						%h4= post.title
+						%p= post.body
+						= link_to 'Show', category_post_path(category, post)
+						= link_to 'Edit', edit_category_post_path(category, post)
+						= link_to 'Destroy', category_post_path(category, post), method: :delete, data: { confirm: 'Are you sure?' }
+				%div.new= link_to "New Post", new_category_post_path(category)
 
