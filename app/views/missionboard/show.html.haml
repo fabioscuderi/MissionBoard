@@ -4,10 +4,12 @@
 			- @roles.each do |role|
 				.col-md-2
 					%h4= role.name
-					%div= select_tag role.name, options_from_collection_for_select(@users, "id", "name")
+					= form_for(role) do |f|
+						= select_tag 'role[user_id]', options_from_collection_for_select(@users, "id", "name", role.user.try(:id)), onchange: "this.form.submit()"
 		.col-md-2.mood
 			%h4 My Mood
-			= select_tag @moods.name, options_from_collection_for_select(@moods, "id", "name")
+			= form_for(current_user) do |f|
+				= select_tag 'user[mood_id]', options_from_collection_for_select(@moods, "id", "name", current_user.mood.try(:id)), onchange: "this.form.submit()"
 		.col-md-3.user
 			%h4= @user.name
 			- if @user.photo.present?
@@ -19,24 +21,12 @@
 	.row.main
 		.col-md-4.sidebar1
 			%h3.heading Mood Board
-			.row
-				.col-md-3.green
-				.col-md-9.peoplegreen.block
-					Thorsten
-					Melanie
-					Christine
-			.row
-				.col-md-3.yellow
-				.col-md-9.peopleyellow.block
-					Thorsten
-					Melanie
-					Christine
-			.row
-				.col-md-3.red
-				.col-md-9.peoplered.block
-					Thorsten
-					Melanie
-					Christine
+			%ul
+				- @moods.each do |mood|
+					.col-md-4
+						%h4= mood.name
+						- mood.users.each do |user|
+							= user.name
 		.col-md-8.body1
 			%h3.heading To Do
 			%table.table.table-striped
@@ -73,4 +63,5 @@
 						= link_to 'Edit', edit_category_post_path(category, post)
 						= link_to 'Destroy', category_post_path(category, post), method: :delete, data: { confirm: 'Are you sure?' }
 				%div.new= link_to "New Post", new_category_post_path(category)
+		%div.new= link_to "New Category", new_category_path
 

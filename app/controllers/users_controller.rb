@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+		@user.mood = Mood.first
 		if @user.save
 			redirect_to users_path(user_id: @user.id)
 		else
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		@users = User.all
 		if @user.update_attributes(user_params)
 	  		redirect_to users_path(@user)
 		else
@@ -40,7 +42,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :photo)
+		params.require(:user).permit(:name, :photo, :mood_id)
 	end
 
 	def fetch_user

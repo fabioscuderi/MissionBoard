@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210141213) do
+ActiveRecord::Schema.define(version: 20170213135226) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20170210141213) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "photo"
+    t.string  "name"
+    t.string  "photo"
+    t.integer "mood_id"
+    t.index ["mood_id"], name: "index_users_on_mood_id"
   end
 
 end

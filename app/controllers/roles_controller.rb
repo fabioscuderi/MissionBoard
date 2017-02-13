@@ -28,7 +28,7 @@ class RolesController < ApplicationController
 
   def update
     if @role.update_attributes(role_params)
-      redirect_to role_path(@role)
+      redirect_to missionboard_path
     else
       render 'edit'
     end
@@ -41,7 +41,7 @@ class RolesController < ApplicationController
 
   private
   def role_params
-    params.require(:role).permit(:name)
+    params.require(:role).permit(:name, :user_id)
   end
 
   def fetch_role
